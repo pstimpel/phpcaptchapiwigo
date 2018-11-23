@@ -1,0 +1,1 @@
+# PHP Captcha for Piwigo
