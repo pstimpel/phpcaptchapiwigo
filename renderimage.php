@@ -3,9 +3,11 @@ require_once __DIR__ . '/phpcaptchaconfig.php';
 
 class renderimage {
 	
-	public function __construct() {
-		
-		session_start();
+	private $hash;
+	
+	public function __construct($hash) {
+
+		$this->hash = $hash;
 		
 		$preset = PhpCaptchaConfig::readConfig();
 
@@ -24,8 +26,8 @@ class renderimage {
 	 * @param $captchaChallenge
 	 */
 	function setSession($captchaChallenge) {
-		
-		$_SESSION['psphpcaptchawp_challenge'] = $captchaChallenge;
+
+		PhpCaptchaConfig::putSessionfile($this->hash,$captchaChallenge);
 		
 	}
 	
@@ -154,4 +156,7 @@ class renderimage {
 	}
 }
 
-$image = new renderimage();
+if(!isset($_GET['hash'])) {
+	die();
+}
+$image = new renderimage($_GET['hash']);

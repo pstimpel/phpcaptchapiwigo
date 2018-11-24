@@ -63,7 +63,7 @@
             <br />&nbsp;<br />
             <label for="strictlowercase">
                 <input type="checkbox" id="strictlowercase" name="strictlowercase"
-                       value="1" {if $captcha.settings.strictlowercase eq "1"}checked{/if} />
+                       value="1" {if $captcha.settings.strictlowercase eq true}checked{/if} />
                 <span>{'Strict lower case'|translate}</span>
             </label>
         </fieldset>
@@ -111,6 +111,33 @@
                 <input type="text" id="fontsize" name="fontsize"  value="{$captcha.settings.fontsize}"  />
                 <span>{'Font size'|translate}</span>
             </label>
+            <br />&nbsp;<br />
+            <label for="guestonly">
+                <input type="checkbox" id="guestonly" name="guestonly"
+                       value="1" {if $captcha.settings.guestonly eq true}checked{/if} />
+                <span>{'Only not logged-in users see Captchas'|translate}</span>
+            </label>
+        </fieldset>
+
+        <h4>{'Captcha use'|translate}</h4>
+        <fieldset>
+            <label for="picture">
+                <input type="checkbox" id="picture" name="picture"
+                       value="1" {if $captcha.settings.picture eq true}checked{/if} />
+                <span>{'Secure picture pages'|translate}</span>
+            </label>
+            <br />&nbsp;<br />
+            <label for="category">
+                <input type="checkbox" id="category" name="category"
+                       value="1" {if $captcha.settings.category eq true}checked{/if} />
+                <span>{'Secure category pages'|translate}</span>
+            </label>
+            <br />&nbsp;<br />
+            <label for="register">
+                <input type="checkbox" id="register" name="register"
+                       value="1" {if $captcha.settings.register eq true}checked{/if} />
+                <span>{'Secure registration form'|translate}</span>
+            </label>
         </fieldset>
 
         <h4>{'OCR confusion'|translate}</h4>
@@ -132,7 +159,7 @@
         <fieldset>
             <label for="allowad">
                 <input type="checkbox" id="allowad" name="allowad"
-                       value="1" {if $captcha.settings.allowad eq "1"}checked{/if} />
+                       value="1" {if $captcha.settings.allowad eq true}checked{/if} />
                 <span>{'Allow small advertisement below Captcha image'|translate}</span>
             </label>
         </fieldset>
@@ -147,7 +174,12 @@
 
     <p>
         <b></b>
-        <img src="{$captcha.webroot}renderimage.php" alt="PHPCaptcha for Piwigo" title="PHPCaptcha for Piwigo"/>
+        <img src="{$captcha.webroot}renderimage.php?hash=void" alt="PHPCaptcha for Piwigo" title="PHPCaptcha for Piwigo"/>
+        {if $captcha.settings.allowad eq true}
+            <br />
+            <small><a href="https://github.com/pstimpel/phpcaptchapiwigo" target="_blank">PHP Captcha for Piwigo</a></small>
+        {/if}
+
     </p>
 
     <h4>{'Reset settings'|translate}</h4>
@@ -176,6 +208,12 @@
                name="numberoflines" value="{$captcha.presets.numberoflines}">
         <input type="hidden"
                name="thicknessoflines" value="{$captcha.presets.thicknessoflines}">
+        <input type="hidden"
+               name="picture" value="{$captcha.presets.picture}">
+        <input type="hidden"
+               name="category" value="{$captcha.presets.category}">
+        <input type="hidden"
+               name="register" value="{$captcha.presets.register}">
 
         <p class="formButtons">
             <input class="submit" type="submit" value="{'Set to defaults'|translate}" name="submit">

@@ -5,7 +5,7 @@ global $template;
 
 $template->set_filenames(
 	array(
-		'plugin_admin_content' => dirname(__FILE__).'/admin.tpl'
+		'plugin_admin_content' => dirname(__FILE__).'/template/admin.tpl'
 	)
 );
 
@@ -61,9 +61,13 @@ class PHPCaptcha_Admin {
 		$valid['charstouse'] = $this->sanitize_charstouse($valid['charstouse'], $input['charstouse'],
 			'Characters allowed', 'charstouse', 10, $sourceIsForm );
 		
-		$valid['strictlowercase'] = $this->sanitize_boolean($valid['strictlowercase'], $input['strictlowercase'],
-			'Strict to lower case', 'strictlowercase', $sourceIsForm);
-		
+		if(!isset($input['strictlowercase'])) {
+			$valid['strictlowercase']=false;
+		} else {
+			$valid['strictlowercase'] = $this->sanitize_boolean( $valid['strictlowercase'], $input['strictlowercase'],
+				'Strict to lower case', 'strictlowercase', $sourceIsForm );
+		}
+
 		//bgcolor
 		$valid['bgcolor'] = $this->sanitize_color($valid['bgcolor'], $input['bgcolor'],
 			'Background color', 'background_color');
@@ -91,8 +95,44 @@ class PHPCaptcha_Admin {
 		$valid['thicknessoflines'] = $this->sanitize_integer($valid['thicknessoflines'], $input['thicknessoflines'],
 			'Thickness of lines', 'thicknessoflines');
 		
-		$valid['allowad'] = $this->sanitize_integer($valid['allowad'], $input['allowad'],
-			'Allow small advertisement below Captcha image', 'allowad');
+		if(!isset($input['allowad'])) {
+			$valid['allowad']=false;
+		} else {
+			$valid['allowad'] = $this->sanitize_boolean($valid['allowad'], $input['allowad'],
+				'Allow small advertisement below Captcha image', 'allowad', $sourceIsForm);
+		}
+		
+		if(!isset($input['guestonly'])) {
+			$valid['guestonly']=false;
+		} else {
+			$valid['guestonly'] = $this->sanitize_boolean($valid['guestonly'], $input['guestonly'],
+				'Only not logged-in users see Captchas', 'guestonly', $sourceIsForm);
+		}
+		
+		if(!isset($input['picture'])) {
+			$valid['picture']=false;
+		} else {
+			$valid['picture'] = $this->sanitize_boolean($valid['picture'], $input['picture'],
+				'Secure picture pages', 'picture', $sourceIsForm);
+		}
+		
+		if(!isset($input['category'])) {
+			$valid['category']=false;
+		} else {
+			$valid['category'] = $this->sanitize_boolean($valid['category'], $input['category'],
+				'Secure category pages', 'category', $sourceIsForm);
+		}
+		
+		if(!isset($input['register'])) {
+			$valid['register']=false;
+		} else {
+			$valid['register'] = $this->sanitize_boolean($valid['register'], $input['register'],
+				'Secure registration form', 'register', $sourceIsForm);
+		}
+		
+		
+		
+		
 		
 		//write setting into file for db-less access
 		$file = __DIR__ ."/config.php";
@@ -103,7 +143,7 @@ class PHPCaptcha_Admin {
 		$current .= "//created ".date("Y-m-d H:i:s O")."\n";
 		$current .= '$stringlength='.$valid['stringlength'].";\n";
 		$current .= '$charstouse=\''.$valid['charstouse']."';\n";
-		$current .= '$strictlowercase='.($valid['strictlowercase'] == "1" ? "true":"false").";\n";
+		$current .= '$strictlowercase='.($valid['strictlowercase'] == true ? "true":"false").";\n";
 		$current .= '$bgcolor=\''.$valid['bgcolor']."';\n";
 		$current .= '$textcolor=\''.$valid['textcolor']."';\n";
 		$current .= '$linecolor=\''.$valid['linecolor']."';\n";
@@ -112,7 +152,11 @@ class PHPCaptcha_Admin {
 		$current .= '$fontsize='.$valid['fontsize'].";\n";
 		$current .= '$numberoflines='.$valid['numberoflines'].";\n";
 		$current .= '$thicknessoflines='.$valid['thicknessoflines'].";\n";
-		$current .= '$allowad='.($valid['allowad'] == "1" ? "true":"false").";\n";
+		$current .= '$allowad='.($valid['allowad'] == true ? "true":"false").";\n";
+		$current .= '$guestonly='.($valid['guestonly'] == true ? "true":"false").";\n";
+		$current .= '$picture='.($valid['picture'] == true ? "true":"false").";\n";
+		$current .= '$category='.($valid['category'] == true ? "true":"false").";\n";
+		$current .= '$register='.($valid['register'] == true ? "true":"false").";\n";
 		$current .= "\n\n\n//END OF FILE\n";
 		
 		file_put_contents($file, $current);
@@ -177,16 +221,12 @@ class PHPCaptcha_Admin {
 	private function sanitize_boolean($valid, $input, $setting_title, $setting_errorid, $sourceIsForm) {
 		if($sourceIsForm) {
 			if(isset($input) && $input == "1") {
-				$validreturn = 1;
+				$validreturn = true;
 			} else {
-				$validreturn = 0;
+				$validreturn = false;
 			}
 		} else {
 			$validreturn = $valid;
-		}
-		if ( !empty($validreturn) && !preg_match( '/^[0-1]{1}$/i', $validreturn )) {
-			printf('Please enter a valid value for %s, (on/off)', $setting_title);
-			return $valid;
 		}
 		return $validreturn;
 	}
