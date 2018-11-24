@@ -1,6 +1,6 @@
 <?php
 /*
-Version: 1.0.3
+Version: 1.0.4
 Plugin Name: PHP Captcha for Piwigo
 Plugin URI: https://piwigo.org/ext/extension_view.php?eid=882
 Author: pstimpel
@@ -91,7 +91,7 @@ function phpcaptcha_admin_menu($menu) {
 		$menu,
 		array(
 			'NAME'  => 'PHP Captcha for Piwigo',
-			'URL'   => get_admin_plugin_menu_link(dirname(__FILE__)).'/admin.php'
+			'URL'   => get_admin_plugin_menu_link(dirname(__FILE__)).'/admin.php?page=plugin-phpcaptchapiwigo'
 		)
 	);
 	return $menu;

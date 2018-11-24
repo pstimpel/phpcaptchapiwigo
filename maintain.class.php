@@ -1,7 +1,7 @@
 <?php
 defined('PHPWG_ROOT_PATH') or die('Hacking attempt');
 
-class phpcaptchapiwigo_maintain extends PluginMaintain
+class extension_882_maintain extends PluginMaintain
 {
 	function install($plugin_version, &$errors=array()) {
 	
