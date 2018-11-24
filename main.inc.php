@@ -2,8 +2,7 @@
 /*
 Version: 1.0
 Plugin Name: PHP Captcha for Piwigo
-Plugin URI: // Here comes a link to the Piwigo extension gallery, after
-           // publication of your plugin. For auto-updates of the plugin.
+Plugin URI: https://piwigo.org/ext/extension_view.php?eid=882
 Author: pstimpel
 Description: PHP Captcha for Piwigo without using any third party content, tracking save and GDPR save replacement for Google Recaptcha and co.
 */
