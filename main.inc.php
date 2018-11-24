@@ -1,11 +1,13 @@
 <?php
 /*
-Version: 1.0
+Version: 1.0.3
 Plugin Name: PHP Captcha for Piwigo
 Plugin URI: https://piwigo.org/ext/extension_view.php?eid=882
 Author: pstimpel
+Author URI: https://wp.peters-webcorner.de
 Description: PHP Captcha for Piwigo without using any third party content, tracking save and GDPR save replacement for Google Recaptcha and co.
 */
+
 
 // Chech whether we are indeed included by Piwigo.
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
