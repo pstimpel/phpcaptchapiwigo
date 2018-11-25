@@ -130,6 +130,19 @@ class PHPCaptcha_Admin {
 				'Secure registration form', 'register', $sourceIsForm);
 		}
 		
+		if(!isset($input['guestbook'])) {
+			$valid['guestbook']=false;
+		} else {
+			$valid['guestbook'] = $this->sanitize_boolean($valid['guestbook'], $input['guestbook'],
+				'Secure guestbook', 'guestbook', $sourceIsForm);
+		}
+		
+		if(!isset($input['contactform'])) {
+			$valid['contactform']=false;
+		} else {
+			$valid['contactform'] = $this->sanitize_boolean($valid['contactform'], $input['contactform'],
+				'Secure contact form', 'guestbook', $sourceIsForm);
+		}
 		
 		
 		
@@ -157,6 +170,8 @@ class PHPCaptcha_Admin {
 		$current .= '$picture='.($valid['picture'] == true ? "true":"false").";\n";
 		$current .= '$category='.($valid['category'] == true ? "true":"false").";\n";
 		$current .= '$register='.($valid['register'] == true ? "true":"false").";\n";
+		$current .= '$guestbook='.($valid['guestbook'] == true ? "true":"false").";\n";
+		$current .= '$contactform='.($valid['contactform'] == true ? "true":"false").";\n";
 		$current .= "\n\n\n//END OF FILE\n";
 		
 		file_put_contents($file, $current);

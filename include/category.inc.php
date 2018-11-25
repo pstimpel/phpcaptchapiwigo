@@ -11,13 +11,14 @@ add_event_handler('user_comment_check', 'check_phpcaptcha', EVENT_HANDLER_PRIORI
 function add_phpcaptcha()
 {
   global $template;
-  $template->set_prefilter('comments_on_albums', 'prefilter_phpcaptcha');
+  $template->set_prefilter('comments_on_albums', 'prefilter_phpcaptcha_category');
+
 }
 
-function prefilter_phpcaptcha($content, $smarty)
+function prefilter_phpcaptcha_category($content, $smarty)
 {
   $search = '{$comment_add.CONTENT}</textarea></p>';
-  return str_replace($search, $search."\n{\$CRYPTO.parsed_content}", $content);
+  return str_replace($search, $search."\n{\$captcha.parsed_content}", $content);
 }
 
 function check_phpcaptcha($action, $comment)

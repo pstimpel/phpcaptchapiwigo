@@ -4,7 +4,7 @@ class PhpCaptchaConfig {
 	const CLEANSESSIONFILESAFTERSECONDS = 3600;
 
 	public static function cleanSessionDir() {
-		
+
 		$path = PhpCaptchaConfig::SESSIONPATH;
 		$seconds = PhpCaptchaConfig::CLEANSESSIONFILESAFTERSECONDS;
 		$filter = '/\.session\.php$/i';
@@ -13,7 +13,13 @@ class PhpCaptchaConfig {
 				while (false !== ($file = readdir($handle))) {
 					if ((time()-filectime($path.$file)) > $seconds) {
 						if (preg_match($filter, $file)) {
-							unlink($path.$file);
+							try {
+								if(file_exists($path.$file)) {
+									unlink( $path . $file );
+								}
+							} catch(Exception $ex) {
+								$ex->getMessage();
+							}
 						}
 					}
 				}
@@ -38,7 +44,7 @@ class PhpCaptchaConfig {
 			
 		}
 		
-		if(!file_exists($filename)) {
+		if(file_exists($filename)) {
 			unlink($filename);
 		}
 		
@@ -59,7 +65,7 @@ class PhpCaptchaConfig {
 		if(file_exists($filename)) {
 			
 			include $filename;
-			
+
 			return $captcha;
 			
 		}
@@ -93,6 +99,8 @@ class PhpCaptchaConfig {
 		$valid['picture']=true;
 		$valid['category']=true;
 		$valid['register']=true;
+		$valid['guestbook']=true;
+		$valid['contactform']=true;
 		return $valid;
 		
 	}
@@ -124,6 +132,16 @@ class PhpCaptchaConfig {
 			
 			// Attention: whenever you add future stuff, make sure to check for isset , since config.php might not
 			// carry the new vars
+			if(isset($guestbook)) {
+				$config['guestbook']=$guestbook;
+			} else {
+				$config['guestbook']=true;
+			}
+			if(isset($contactform)) {
+				$config['contactform']=$contactform;
+			} else {
+				$config['contactform']=true;
+			}
 		}
 		
 		return $config;

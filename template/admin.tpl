@@ -138,6 +138,18 @@
                        value="1" {if $captcha.settings.register eq true}checked{/if} />
                 <span>{'Secure registration form'|translate}</span>
             </label>
+            <br />&nbsp;<br />
+            <label for="register">
+                <input type="checkbox" id="guestbook" name="guestbook"
+                       value="1" {if $captcha.settings.guestbook eq true}checked{/if} />
+                <span>{'Secure guestbook'|translate}</span>
+            </label>
+            <br />&nbsp;<br />
+            <label for="contactform">
+                <input type="checkbox" id="contactform" name="contactform"
+                       value="1" {if $captcha.settings.contactform eq true}checked{/if} />
+                <span>{'Secure contact form'|translate}</span>
+            </label>
         </fieldset>
 
         <h4>{'OCR confusion'|translate}</h4>
@@ -214,6 +226,10 @@
                name="category" value="{$captcha.presets.category}">
         <input type="hidden"
                name="register" value="{$captcha.presets.register}">
+        <input type="hidden"
+               name="guestbook" value="{$captcha.presets.guestbook}">
+        <input type="hidden"
+               name="contactform" value="{$captcha.presets.contactform}">
 
         <p class="formButtons">
             <input class="submit" type="submit" value="{'Set to defaults'|translate}" name="submit">

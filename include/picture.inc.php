@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright (c) 2018. Peters Webcorner, All rights reserved if not mentioned different!
- */
 
 defined('PHPCAPTCHA_PATH') or die('Hacking attempt!');
 

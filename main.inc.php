@@ -67,6 +67,14 @@ function phpcaptcha_document_init()
 		{
 			include(PHPCAPTCHA_PATH . 'include/category.inc.php');
 		}
+		else if ($page['section'] == 'contact' && $phpcaptcha_config['contactform'])
+		{
+			include(PHPCAPTCHA_PATH . 'include/contactform.inc.php');
+		}
+		else if ($page['section'] == 'guestbook' && $phpcaptcha_config['guestbook'])
+		{
+			include(PHPCAPTCHA_PATH . 'include/guestbook.inc.php');
+		}
 	}
 }
 function phpcaptcha_register_init()
