@@ -1,2 +1,4 @@
 config.php
 *.session.php
+obsolete.list
+pem_metadata.txt
