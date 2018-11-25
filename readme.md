@@ -38,3 +38,6 @@ Would love to receive feedback.
 1. use it
 
 
+## Credits
+
+Heavily based on work by Mistic and his Plugin Crypto Captcha
