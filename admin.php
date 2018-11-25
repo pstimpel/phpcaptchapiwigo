@@ -182,34 +182,39 @@ class PHPCaptcha_Admin {
 	}
 	
 	private function sanitize_color($valid, $input, $setting_title, $setting_errorid) {
+		global $page;
 		$validreturn = (isset($input) && !empty($input))
 			? $input : $valid;
 		if ( !empty($validreturn) && !preg_match( '/^[a-f0-9]{6}$/i', $validreturn ) ) {
-			
-			printf('Please enter a valid hex value for %s, (#RRGGBB)', $setting_title);
+			$page['errors'][] = sprintf(l10n('Please enter a valid hex value for %s, (RRGGBB, a-f, 0-9)'), l10n
+				($setting_title));
 			return $valid;
 		}
 		return $validreturn;
 	}
 	
 	private function sanitize_integer($valid, $input, $setting_title, $setting_errorid) {
+		global $page;
 		$validreturn = (isset($input) && !empty($input))
 			? $input : $valid;
-		if ( !empty($validreturn) && !preg_match( '/^[0-9]/i', $validreturn ) ) {
-			printf('Please enter a valid integer value for %s',$setting_title);
+		if ( !empty($validreturn) && preg_match( '/^[0-9]*$/i', $validreturn )==0 ) {
+			$page['errors'][] = sprintf(l10n('Please enter a valid integer value for %s'),l10n($setting_title));
 			return $valid;
 		}
 		return $validreturn;
 	}
 	
 	private function sanitize_charstouse($valid, $input, $setting_title, $setting_errorid, $minlength, $sourceIfForm) {
+		global $page;
 		if($sourceIfForm) {
 			if(strlen($input) < $minlength) {
-				printf('Please enter a valid value for %s, at least %d chars long', $setting_title, $minlength);
+				$page['errors'][] = sprintf(l10n('Please enter a valid value for %s, at least %d chars long'), l10n($setting_title),
+					$minlength);
 				return $valid;
 			}
 			if ( !preg_match( '/^[a-zA-Z0-9]/i', $input )) {
-				printf('Please enter a valid value for %s, at least %d chars long', $setting_title, $minlength);
+				$page['errors'][] = sprintf(l10n('Please enter a valid value for %s, at least %d chars long'), l10n($setting_title),
+					$minlength);
 				return $valid;
 			}
 			return $input;

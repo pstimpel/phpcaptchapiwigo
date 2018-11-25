@@ -1,13 +1,30 @@
 <?php
 /*
-Version: 1.0.3
+Version: 1.0.8
 Plugin Name: PHP Captcha for Piwigo
 Plugin URI: https://piwigo.org/ext/extension_view.php?eid=882
 Author: pstimpel
 Author URI: https://wp.peters-webcorner.de
-Description: PHP Captcha for Piwigo without using any third party content, tracking save and GDPR save replacement for Google Recaptcha and co.
+Description: PHP Captcha for Piwigo provides anti spam functionality, works without using any third party content, tracking save and GDPR save replacement for Google Recaptcha and co.
 */
 
+/**
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
+ */
 
 // Chech whether we are indeed included by Piwigo.
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
@@ -67,6 +84,7 @@ function phpcaptcha_document_init()
 			$phpcaptcha_config['category']
 		)
 		{
+			//TODO check this
 			include(PHPCAPTCHA_PATH . 'include/category.inc.php');
 		}
 	}
@@ -90,8 +108,8 @@ function phpcaptcha_admin_menu($menu) {
 	array_push(
 		$menu,
 		array(
-			'NAME'  => 'PHP Captcha for Piwigo',
-			'URL'   => get_admin_plugin_menu_link(dirname(__FILE__)).'/admin.php'
+			'NAME'  => l10n('PHP Captcha for Piwigo'),
+			'URL'   => get_root_url() . 'admin.php?page=plugin-phpcaptchapiwigo'
 		)
 	);
 	return $menu;

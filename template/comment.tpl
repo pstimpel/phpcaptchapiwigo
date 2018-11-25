@@ -1,8 +1,8 @@
 <p>
-  <img id="captcha" src="{$PHPCAPTCHA_PATH}renderimage.php?hash={$captchahash}" alt="PHP CAPTCHA for Piwigo">
+  <img id="captcha" src="{$PHPCAPTCHA_PATH}renderimage.php?hash={$captchahash}" alt="{'PHP Captcha for Piwigo'|translate}" title="{'PHP Captcha for Piwigo'|translate}">
   {if $captcha.allowad eq true}
     <br />
-    <small><a href="https://github.com/pstimpel/phpcaptchapiwigo" target="_blank">PHP Captcha for Piwigo</a></small>
+    <small><a href="https://github.com/pstimpel/phpcaptchapiwigo" target="_blank">{'PHP Captcha for Piwigo'|translate}</a></small>
   {/if}
 </p>
 

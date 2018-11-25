@@ -53,12 +53,12 @@
         <fieldset>
             <label for="stringlength">
                 <input type="text" id="stringlength" name="stringlength"  value="{$captcha.settings.stringlength}"  />
-                <span>{'Number of characters'|translate}</span>
+                <span>{'Number of characters'|translate} ({'Integer'|translate})</span>
             </label>
             <br />&nbsp;<br />
             <label for="charstouse">
                 <input type="text" id="charstouse" name="charstouse"  value="{$captcha.settings.charstouse}"  />
-                <span>{'Characters allowed'|translate}</span>
+                <span>{'Characters allowed'|translate} ({'String'|translate})</span>
             </label>
             <br />&nbsp;<br />
             <label for="strictlowercase">
@@ -71,25 +71,25 @@
 
         <h4>{'Captcha colors'|translate}</h4>
         <fieldset class="wp_cbf-admin-colors">
-            <span>{'Background Color'|translate}</span><br />
+            <span>{'Background color'|translate} ({'Hex Color (RRGGBB, a-f, 0-9)'|translate})</span><br />
             <label for="bgcolor">
                 <input type="text" class="color-picker" id="bgcolor" name="bgcolor"
-                       value="{$captcha.settings.bgcolor}"  />
+                       value="{$captcha.settings.bgcolor}" maxlength="6" />
             </label>
             <br />&nbsp;<br />
 
 
-            <span>{'Text Color'|translate}</span><br />
+            <span>{'Text color'|translate} ({'Hex Color (RRGGBB, a-f, 0-9)'|translate})</span><br />
             <label for="textcolor">
                 <input type="text" class="color-picker" id="textcolor" name="textcolor"
-                       value="{$captcha.settings.textcolor}" />
+                       value="{$captcha.settings.textcolor}" maxlength="6" />
             </label>
             <br />&nbsp;<br />
 
-            <span>{'Line Color'|translate}</span><br />
+            <span>{'Line color'|translate} ({'Hex Color (RRGGBB, a-f, 0-9)'|translate})</span><br />
             <label for="linecolor">
                 <input type="text" class="color-picker" id="linecolor" name="linecolor"
-                       value="{$captcha.settings.linecolor}" />
+                       value="{$captcha.settings.linecolor}" maxlength="6" />
             </label>
         </fieldset>
 
@@ -97,19 +97,19 @@
         <fieldset>
             <label for="sizewidth">
                 <input type="text" id="sizewidth" name="sizewidth"  value="{$captcha.settings.sizewidth}"  />
-                <span>{'Image width'|translate}</span>
+                <span>{'Image width'|translate} ({'Integer'|translate})</span>
             </label>
             <br />&nbsp;<br />
 
             <label for="sizeheight">
                 <input type="text" id="sizeheight" name="sizeheight"  value="{$captcha.settings.sizeheight}"  />
-                <span>{'Image height'|translate}</span>
+                <span>{'Image height'|translate} ({'Integer'|translate})</span>
             </label>
             <br />&nbsp;<br />
 
             <label for="fontsize">
                 <input type="text" id="fontsize" name="fontsize"  value="{$captcha.settings.fontsize}"  />
-                <span>{'Font size'|translate}</span>
+                <span>{'Font size'|translate} ({'Integer'|translate})</span>
             </label>
             <br />&nbsp;<br />
             <label for="guestonly">
@@ -145,13 +145,13 @@
             <label for="numberoflines">
                 <input type="text" id="numberoflines" name="numberoflines"
                        value="{$captcha.settings.numberoflines}"  />
-                <span>{'Number of lines'|translate}</span>
+                <span>{'Number of lines'|translate} ({'Integer'|translate})</span>
             </label>
             <br />&nbsp;<br />
             <label for="thicknessoflines">
                 <input type="text" id="thicknessoflines" name="thicknessoflines"
                        value="{$captcha.settings.thicknessoflines}" />
-                <span>{'Thickness of lines'|translate}</span>
+                <span>{'Thickness of lines'|translate} ({'Integer'|translate})</span>
             </label>
         </fieldset>
 
@@ -174,10 +174,10 @@
 
     <p>
         <b></b>
-        <img src="{$captcha.webroot}renderimage.php?hash=void" alt="PHPCaptcha for Piwigo" title="PHPCaptcha for Piwigo"/>
+        <img src="{$captcha.webroot}renderimage.php?hash=void" alt="{'PHP Captcha for Piwigo'|translate}" title="{'PHP Captcha for Piwigo'|translate}"/>
         {if $captcha.settings.allowad eq true}
             <br />
-            <small><a href="https://github.com/pstimpel/phpcaptchapiwigo" target="_blank">PHP Captcha for Piwigo</a></small>
+            <small><a href="https://github.com/pstimpel/phpcaptchapiwigo" target="_blank">{'PHP Captcha for Piwigo'|translate}</a></small>
         {/if}
 
     </p>

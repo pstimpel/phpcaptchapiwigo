@@ -1,0 +1,1 @@
+PHP Captcha für Piwigo stellt Captcha Funktionen zur Verfügung und wehrt Spam ab, es nutzt keine Rssourcen von Dritten, und ist damit ein DSGVO konformer Ersatz für Google Recaptcha and Co.
