@@ -41,3 +41,5 @@ Would love to receive feedback.
 ## Credits
 
 Heavily based on work by Mistic and his Plugin Crypto Captcha
+
+Colorpicker by Stefan Petre

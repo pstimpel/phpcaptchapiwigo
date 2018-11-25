@@ -10,6 +10,7 @@ Description: PHP Captcha for Piwigo without using any third party content, track
 
 /**
 	Heavily based on work by Mistic and the Plugin Crypto Captcha
+    Color Picker by Stefan Petre
  */
 
 /**
