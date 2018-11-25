@@ -1,0 +1,1 @@
+PHP Captcha for Piwigo provides anti spam functionality, works without using any third party content, tracking save and GDPR save replacement for Google Recaptcha and co.
