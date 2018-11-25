@@ -36,3 +36,5 @@ $lang['Please enter a valid value for %s, at least %d chars long'] = 'Bitte eine
 $lang['Integer']="Ganzzahl";
 $lang['String']='Zeichenkette';
 $lang['Hex Color (RRGGBB, a-f, 0-9)']='Hex Farbwert (RRGGBB, a-f, 0-9)';
+$lang['Secure guestbook']='Einträge im Gästebuch sichern';
+$lang['Secure contact form']='Kontaktformular sichern';

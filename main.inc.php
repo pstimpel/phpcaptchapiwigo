@@ -8,6 +8,9 @@ Author URI: https://wp.peters-webcorner.de
 Description: PHP Captcha for Piwigo without using any third party content, tracking save and GDPR save replacement for Google Recaptcha and co.
 */
 
+/**
+	Heavily based on work by Mistic and the PLugin Crypto Captcha
+ */
 
 // Chech whether we are indeed included by Piwigo.
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');

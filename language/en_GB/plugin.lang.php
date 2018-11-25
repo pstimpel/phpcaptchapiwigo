@@ -36,3 +36,5 @@ $lang['Please enter a valid value for %s, at least %d chars long'] = 'Please ent
 $lang['Integer']="Integer";
 $lang['String']='String';
 $lang['Hex Color (RRGGBB, a-f, 0-9)']='Hex Color (RRGGBB, a-f, 0-9)';
+$lang['Secure guestbook']='Secure guestbook';
+$lang['Secure contact form']='Secure contact form';
