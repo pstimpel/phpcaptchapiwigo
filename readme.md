@@ -43,3 +43,5 @@ Would love to receive feedback.
 Heavily based on work by Mistic and his Plugin Crypto Captcha
 
 Colorpicker by Stefan Petre
+
+Thanks to MatthieuLP for making the stuff compatible with Piwigo 12
