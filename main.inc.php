@@ -1,6 +1,6 @@
 <?php
 /*
-Version: 1.0.9
+Version: 1.1.0
 Plugin Name: PHP Captcha for Piwigo
 Plugin URI: https://piwigo.org/ext/extension_view.php?eid=882
 Author: pstimpel
