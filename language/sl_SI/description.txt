@@ -1,0 +1,1 @@
+PHP Captcha za Piwigo zagotavlja funkcijo preprečevanja neželene pošte, deluje brez uporabe vsebine tretjih oseb, shranjevanja za sledenje in zamenjavo shranjevanja GDPR za Google Recaptcha in co.
