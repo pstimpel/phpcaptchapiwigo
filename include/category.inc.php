@@ -15,7 +15,7 @@ function add_phpcaptcha()
 
 }
 
-function prefilter_phpcaptcha_category($content, $smarty)
+function prefilter_phpcaptcha_category($content)
 {
   $search = '{$comment_add.CONTENT}</textarea></p>';
   return str_replace($search, $search."\n{\$captcha.parsed_content}", $content);
