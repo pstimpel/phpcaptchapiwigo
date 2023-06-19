@@ -17,7 +17,7 @@ function add_phpcaptcha_register()
   $template->set_prefilter('register', 'prefilter_phpcaptcha_register');
 }
 
-function prefilter_phpcaptcha_register($content, $smarty)
+function prefilter_phpcaptcha_register($content)
 {
  $search = '<label for="send_password_by_mail">';
 	return str_replace($search, "{\$captcha.parsed_content}".$search."\n", $content);

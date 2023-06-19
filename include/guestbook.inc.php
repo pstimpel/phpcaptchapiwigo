@@ -10,7 +10,7 @@ add_event_handler('user_comment_check', 'check_phpcaptcha', EVENT_HANDLER_PRIORI
 global $template;
 $template->set_prefilter('guestbook', 'prefilter_phpcaptcha');
 
-function prefilter_phpcaptcha($content, $smarty)
+function prefilter_phpcaptcha($content)
 {
 	$search = '</textarea>';
 	return str_replace($search, $search."\n{\$captcha.parsed_content}", $content);
