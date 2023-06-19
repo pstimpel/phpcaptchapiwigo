@@ -1,3 +1,6 @@
+With the original version of this plugin I still received to much spam. 
+This fork replaces the presented captcha image with an iframe showing a table of slices of the images.
+
 # PHP Captcha for Piwigo
 
 * Plugins home in Piwigo extensions gallery: https://piwigo.org/ext/extension_view.php?eid=882
